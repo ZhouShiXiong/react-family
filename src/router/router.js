@@ -3,6 +3,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
 import Bundle from './Bundle';
+import "antd/dist/antd.css"
 
 import Home from 'bundle-loader?lazy&name=home!pages/Home/Home';
 import Page1 from 'bundle-loader?lazy&name=page1!pages/Page1/Page1';

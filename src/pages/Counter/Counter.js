@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {increment, decrement, reset} from 'actions/counter';
-
 import {connect} from 'react-redux';
+import { Button } from 'antd';
 
 class Counter extends Component {
     render() {
@@ -14,6 +14,10 @@ class Counter extends Component {
                 </button>
                 <button onClick={() => this.props.reset()}>重置
                 </button>
+                <Button type="primary">Primary</Button>
+                <Button>Default</Button>
+                <Button type="dashed">Dashed</Button>
+                <Button type="danger">Danger</Button>
             </div>
         )
     }
