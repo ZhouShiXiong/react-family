@@ -7,6 +7,7 @@ class Bundle extends Component {
     };
 
     componentWillMount() {
+      console.log('走了这');
       console.log(this.props);
         this.load(this.props)
     }

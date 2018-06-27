@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-
+import {hashHistory} from 'react-router';
 import Bundle from './Bundle';
 import "antd/dist/antd.css"
 
@@ -23,21 +23,22 @@ const createComponent = (component) => (props) => (
 );
 
 const getRouter = () => (
-    <Router>
-        <div>
-            <ul>
-                <li><Link to="/">首页</Link></li>
-                <li><Link to="/page1">Page1</Link></li>
-                <li><Link to="/counter">Counter</Link></li>
-                <li><Link to="/userinfo">UserInfo</Link></li>
-            </ul>
-            <Switch>
-                <Route exact path="/" component={createComponent(Home)}/>
-                <Route path="/page1" component={createComponent(Page1)}/>
-                <Route path="/counter" component={createComponent(Counter)}/>
-                <Route path="/userinfo" component={createComponent(UserInfo)}/>
-            </Switch>
-        </div>
+    <Router >
+
+          <div>
+        <ul>
+            <li><Link to="/">首页</Link></li>
+            <li><Link to="/page1">Page1</Link></li>
+            <li><Link to="/counter">Counter</Link></li>
+            <li><Link to="/userinfo">UserInfo</Link></li>
+        </ul>
+        <Switch>
+            <Route exact path="/" component={createComponent(Home)}/>
+            <Route path="/page1" component={createComponent(Page1)}/>
+            <Route path="/counter" component={createComponent(Counter)}/>
+            <Route path="/userinfo" component={createComponent(UserInfo)}/>
+        </Switch>
+      </div>
     </Router>
 );
 
