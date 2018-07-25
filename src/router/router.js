@@ -9,6 +9,8 @@ import Home from 'bundle-loader?lazy&name=home!pages/Home/Home';
 import Page1 from 'bundle-loader?lazy&name=page1!pages/Page1/Page1';
 import Counter from 'bundle-loader?lazy&name=counter!pages/Counter/Counter';
 import UserInfo from 'bundle-loader?lazy&name=userInfo!pages/UserInfo/UserInfo';
+import Main from '../pages/layouts/Main.js';
+import Login from 'bundle-loader?lazy&name=counter!pages/Login/Login';
 
 const Loading = function () {
     return <div>Loading...</div>
@@ -23,22 +25,20 @@ const createComponent = (component) => (props) => (
 );
 
 const getRouter = () => (
-    <Router >
+    <Router  >
+      <Switch>
+          <Route exact path="/login" component={createComponent(Login)}/>
 
-          <div>
-        <ul>
-            <li><Link to="/">首页</Link></li>
-            <li><Link to="/page1">Page1</Link></li>
-            <li><Link to="/counter">Counter</Link></li>
-            <li><Link to="/userinfo">UserInfo</Link></li>
-        </ul>
-        <Switch>
+          <Main>
+          <Switch>
             <Route exact path="/" component={createComponent(Home)}/>
-            <Route path="/page1" component={createComponent(Page1)}/>
-            <Route path="/counter" component={createComponent(Counter)}/>
-            <Route path="/userinfo" component={createComponent(UserInfo)}/>
-        </Switch>
-      </div>
+            <Route exact path="/page1" component={createComponent(Page1)}/>
+            <Route exact path="/counter" component={createComponent(Counter)}/>
+            <Route exact path="/userinfo" component={createComponent(UserInfo)}/>
+            </Switch>
+          </Main>
+
+      </Switch>
     </Router>
 );
 
