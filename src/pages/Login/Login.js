@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import 'antd/dist/antd.css';
 import './Login.css';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
+import { post } from '../../utils/request';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 const FormItem = Form.Item;
  class Login extends Component {
@@ -9,7 +10,17 @@ const FormItem = Form.Item;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        post('http://localhost:3000/login', values)
+          .then((res) => {
+            console.log(res);
+            if (res) {
+              message.info('登录成功');
+              this.props.history.push('/');
+            } else {
+
+              message.info('登录失败，账号或密码错误');
+            }
+          });
       }
     });
   }
@@ -42,7 +53,7 @@ const FormItem = Form.Item;
           )}
           <a className="login-form-forgot" href="">Forgot password</a>
           <Button type="primary" htmlType="submit" className="login-form-button">
-            <Link to="/">登陆</Link>
+            登陆
           </Button>
           Or <a href="">register now!</a>
         </FormItem>
